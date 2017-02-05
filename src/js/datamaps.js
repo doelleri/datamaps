@@ -1120,15 +1120,15 @@
         else {
           color = this.options.fills[ subunitData.fillKey ];
         }
-        // If it's an object, overriding the previous data
+        // If it's an object replace the previous data
         if ( subunitData === Object(subunitData) ) {
-          this.options.data[subunit] = defaults(subunitData, this.options.data[subunit] || {});
+          this.options.data[subunit] = subunitData;
           var geo = this.svg.select('.' + subunit).attr('data-info', JSON.stringify(this.options.data[subunit]));
         }
         svg
           .selectAll('.' + subunit)
           .transition()
-            .style('fill', color);
+          .style('fill', color);
       }
     }
   };
